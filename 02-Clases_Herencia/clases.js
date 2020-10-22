@@ -8,6 +8,24 @@ class Perro {
         this.vacunas = ['rabia'];
         this.nombre = nombre
     }
+    getNombre(){
+        return this.nombre
+    }
+    setNombre(nombre){
+        this.nombre = nombre
+    }
+    getPatas(){
+        return this.patas
+    }
+    setPatas(numeroPatas){
+        this.patas = numeroPatas
+    }
+    getVacunas(){
+        return this.vacunas
+    }
+    setVacunas(vacuna){
+        this.vacunas.push(vacuna)
+    }
     correr(){
         console.log('El perro esta corriendo');
     }
@@ -19,9 +37,11 @@ class Perro {
     }
 }
 
-let ayudanteSanta = new Perro();
+let ayudanteSanta = new Perro('Ayudante de santa');
 
-console.log(ayudanteSanta.nombre);
+console.log(ayudanteSanta.getNombre());
+console.log(ayudanteSanta.getPatas());
+console.log(ayudanteSanta.getVacunas());
 ayudanteSanta.correr();
 ayudanteSanta.comer();
 ayudanteSanta.ladrar();
