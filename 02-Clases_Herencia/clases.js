@@ -6,25 +6,25 @@ class Perro {
         this.peso = '8kg';
         this.raza = 'Pitbull';
         this.vacunas = ['rabia'];
-        this.nombre = nombre
+        this.nombre = nombre;
     }
     getNombre(){
-        return this.nombre
+        return this.nombre;
     }
     setNombre(nombre){
-        this.nombre = nombre
+        this.nombre = nombre;
     }
     getPatas(){
-        return this.patas
+        return this.patas;
     }
     setPatas(numeroPatas){
-        this.patas = numeroPatas
+        this.patas = numeroPatas;
     }
     getVacunas(){
-        return this.vacunas
+        return this.vacunas;
     }
     setVacunas(vacuna){
-        this.vacunas.push(vacuna)
+        this.vacunas.push(vacuna);
     }
     correr(){
         console.log('El perro esta corriendo');
@@ -48,8 +48,9 @@ ayudanteSanta.ladrar();
 
 
 let pitbull = new Perro('Max');
-
-console.log(pitbull.nombre)
+console.log(pitbull.getNombre())
+pitbull.setNombre('Pepito')
+console.log(pitbull.getNombre())
 pitbull.comer();
 pitbull.correr();
 pitbull.ladrar();
