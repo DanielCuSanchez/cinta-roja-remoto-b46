@@ -8,5 +8,7 @@ const climate_change = new Documental('Cambio climatico','90m','Juan Martinez','
 
 const cinepolis = new Cine('Plaza medellin');
 
+
+
 cinepolis.reproducirPelicula(star_wars);
 cinepolis.reproducirPelicula(climate_change);

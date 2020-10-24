@@ -9,4 +9,4 @@ class Pelicula extends Largometraje{
     }
 }
 
-module.exports = {  Pelicula }
+module.exports = {  Pelicula };
