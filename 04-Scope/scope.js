@@ -1,4 +1,5 @@
-//Ejemplo1 
+console.log('Clase de scope')
+//Ejemplo1
 {
     var global = 'VariableVAR'
     let variable = 'VariableLET'
