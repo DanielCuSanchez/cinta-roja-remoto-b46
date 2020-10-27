@@ -7,18 +7,17 @@
 
 // saludo()
 
-let usuarios = [{
-    id: 1
+let empleadosDirecciones = [{
+    id: 1,
+    direccion: 'Calle 1'
 },
 {
-    id: 2
-},
-{
-    id: 3
+    id: 2,
+    direccion: 'Calle 2'
 }
 ]
 
-let usuariosNombres = [{
+let empleados = [{
     id: 1,
     nombre: 'Juan Perez'
 },
@@ -32,19 +31,34 @@ let usuariosNombres = [{
 }
 ]
 
-function buscarNombrePorId( id ){
-    let { nombre } = usuariosNombres.find(elemento => elemento.id === id)
-    console.log(nombre)
+function getEmpleado(id, callback){
+    const empleadoEncontrado = empleados.find( empleado => empleado.id === id);
+    if(empleadoEncontrado === undefined){
+        callback(`Error empleado con ID ${id} no fue encontrado`, null);
+    }else{
+        callback(null, empleadoEncontrado)
+    }
 }
-//buscarNombrePorId(1)
 
-
-//Desestructaracion
-const usuario ={
-    nombre: 'Juan Manuel',
-    apellido: 'Pedro',
-    id: 10
+function getDireccion(empleado, callback){
+    const { id } = empleado
+    const empleadoDireccion = empleadosDirecciones.find(e => e.id === id);
+    if(!empleadoDireccion)
+        return callback(`No encontre la direccion`, null);
+    callback(null, empleadoDireccion)
 }
-const { nombre } = usuario
-//console.log(nombre)
 
+getEmpleado(3, (error, empleado)=>{
+    if(error){
+        console.log(error)
+        return
+    }
+    console.log(empleado)
+    getDireccion(empleado, (error , direccion)=>{
+        if(error){
+            console.log(error)
+            return
+        }
+        console.log(direccion)
+    })
+})
