@@ -1,5 +1,6 @@
-const colors = require('colors/safe')
-const fs = require('fs')
+const colors = require('colors/safe');
+const fs = require('fs');
+const os = require('os');
 
 
 const guardarData = (data, nombre, extension) =>{
@@ -15,10 +16,10 @@ const leerData = (nombre)=>{
         console.log(data)
     })
 }
+//guardarData('Hola soy un txt', 'archivo','txt')
+//leerData('archivo')
 
-guardarData('Hola soy un txt', 'archivo','txt')
-leerData('archivo')
-
+//console.log(os.cpus())
 
 
 console.log(colors.blue('==============HOLA MUNDO============='))
