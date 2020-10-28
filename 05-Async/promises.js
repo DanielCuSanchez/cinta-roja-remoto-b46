@@ -1,5 +1,6 @@
 const axios = require('axios')
 const fetch = require('node-fetch')
+const { resolve } = require('path')
 
 // function suma(n1,n2){
 //     return n1+n2
@@ -59,6 +60,64 @@ const getData = (URL)=>{
 
 
 
+
+
 // axios.get('https://pokeapi.co/api/v2/pokemon')
 // .then(respuesta => console.log(respuesta.data))
 // .catch(e => console.log(e))
+
+
+let empleadosDirecciones = [{
+    id: 1,
+    direccion: 'Calle 1'
+},
+{
+    id: 2,
+    direccion: 'Calle 2'
+}
+]
+
+let empleados = [{
+    id: 1,
+    nombre: 'Juan Perez'
+},
+{
+    id: 2,
+    nombre: 'Pedro'
+},
+{
+    id: 3,
+    nombre: 'Andres'
+}
+]
+
+const getEmpleadoById = (id)=>{
+    return new Promise((resolve, reject)=>{
+        const empleadoFind = empleados.find(empleado => empleado.id === id);
+        if(empleadoFind){
+            resolve(empleadoFind)
+        }else{
+            reject('Empleado no encontrado')
+        }
+    })
+}
+const getDireccionEmpleado = (empledo)=>{
+    return new Promise((resolve, reject)=>{
+        const direccionFind = empleadosDirecciones.find(d => d.id === empledo.id);
+        if(direccionFind){
+            resolve(direccionFind)
+        }else{
+            reject('Direccion no encontrada')
+        }
+    })
+}
+
+getEmpleadoById(1)
+.then(empleado => {
+    console.log(empleado)
+    return getDireccionEmpleado(empleado);
+})
+.then(direccion =>{
+    console.log(direccion);
+})
+.catch(e => console.log(e))
