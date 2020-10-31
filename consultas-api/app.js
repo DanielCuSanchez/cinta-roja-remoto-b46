@@ -37,7 +37,33 @@ const getWeatherByCity2 = ( city )=>{
             .catch(e => reject(e));
     })
 }
-getWeatherByCity2('London')
-.then( console.log )
-//then (r => console.log(r));
-.catch(console.log )
+// getWeatherByCity2('London')
+// .then( console.log )
+// //then (r => console.log(r));
+// .catch(console.log )
+
+
+const getAsteroids = async (start_date, end_date) =>{
+    const API_KEY = 'w4lKuDCvMLuD5KBfkJKOmZSIfr9FgCWES821srDb';
+    const URL = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${start_date}&end_date=${end_date}&api_key=${API_KEY}`;
+    const response = await axios.get(URL);
+    //console.log(response)
+    if(response.status === 200){
+        const { data } = response;
+        //console.log(data.near_earth_objects);
+        const asteroides = data.near_earth_objects;
+        const asteroidesPELIGROSOS = Object.keys(asteroides).forEach(fecha =>{
+            //console.log(fecha);
+            const asteroidesPeligrosos = asteroides[fecha].filter(asteroide => asteroide.is_potentially_hazardous_asteroid);
+            //console.log(asteroidesPeligrosos);
+            return asteroidesPeligrosos
+        })
+        return asteroidesPELIGROSOS
+    }else{
+        return response.error
+    }
+}
+
+getAsteroids('2020-10-01','2020-10-07')
+.then(asteroides =>  console.log(asteroides))
+.catch(e => console.log(e))
