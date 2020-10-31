@@ -52,13 +52,18 @@ const getAsteroids = async (start_date, end_date) =>{
         const { data } = response;
         //console.log(data.near_earth_objects);
         const asteroides = data.near_earth_objects;
-        const asteroidesPELIGROSOS = Object.keys(asteroides).forEach(fecha =>{
-            //console.log(fecha);
-            const asteroidesPeligrosos = asteroides[fecha].filter(asteroide => asteroide.is_potentially_hazardous_asteroid);
-            //console.log(asteroidesPeligrosos);
-            return asteroidesPeligrosos
+        const keys =  Object.keys(asteroides)
+        const asteroidesPeligrosos = keys.map(key => {
+            const asteroidesP = asteroides[key].filter(e => e.is_potentially_hazardous_asteroid);
+            if(asteroidesP.length === 0){
+                return `${key}`
+            }else{
+                return asteroidesP
+            }
         })
-        return asteroidesPELIGROSOS
+        //console.log(asteroidesPeligrosos)
+        return asteroidesPeligrosos
+       
     }else{
         return response.error
     }
